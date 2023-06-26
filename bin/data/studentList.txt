@@ -1,9 +1,4 @@
 nguyen tien thuan
-<<<<<<< HEAD
 le van B
 Tran Van B
 Le Thi P
-=======
-nguyen van A
-le van B
->>>>>>> b64ceb699d9b5cfd8576695cce2d0bb108798077

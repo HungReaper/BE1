@@ -1,14 +1,11 @@
 package gui;
 
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 import core.Menu;
 import core.StudentFunction;
 import core.SubjectFuntion;
-<<<<<<< HEAD
-=======
-
-import java.io.FileNotFoundException;
-import java.util.Scanner;
->>>>>>> b64ceb699d9b5cfd8576695cce2d0bb108798077
 
 public class Main {
 
@@ -51,10 +48,6 @@ public class Main {
                     StudentFunction.studentFunction();
                     break;
                 case 2:
-<<<<<<< HEAD
-=======
-                    clearConsole();
->>>>>>> b64ceb699d9b5cfd8576695cce2d0bb108798077
                     SubjectFuntion.subjectFuntion();
                     break;
                 case 3:

@@ -11,19 +11,11 @@ import gui.Main;
 
 public class SubjectFuntion {
     static int sizeList;
-<<<<<<< HEAD
     public static final String FILESUBJECT = "D:\\VScode\\ProjectBE1\\Student_Management\\Student_Management\\src\\data";
     public static final String FILESUBIDLIST = "D:\\VScode\\ProjectBE1\\Student_Management\\Student_Management\\src\\data";
     public static final String FILESUBNAME = "D:\\VScode\\ProjectBE1\\Student_Management\\Student_Management\\src\\data\\SubjectName.txt";
     public static final String FILESUBID = "D:\\VScode\\ProjectBE1\\Student_Management\\Student_Management\\src\\data\\SubjectId.txt";
     public static final String FILESUBCREDIT = "D:\\VScode\\ProjectBE1\\Student_Management\\Student_Management\\src\\data\\SubjectCredit.txt";
-=======
-    public static final String FILESUBJECT = "src\\data\\Subject";
-    public static final String FILESUBIDLIST = "src\\data\\Subject\\SubjectId";
-    public static final String FILESUBNAME = "src\\data\\Subject\\SubjectName.txt";
-    public static final String FILESUBID = "src\\data\\Subject\\SubjectId.txt";
-    public static final String FILESUBCREDIT = "src\\data\\Subject\\SubjectCredit.txt";
->>>>>>> b64ceb699d9b5cfd8576695cce2d0bb108798077
 
     public static void subjectFuntion (){
         boolean quit = false;
@@ -137,11 +129,7 @@ public class SubjectFuntion {
             } while(!check);
             sub.setCredit(credit);
 
-<<<<<<< HEAD
             WriteToFile.writtNewToFile(FILESUBIDLIST + "\\" + sub.getId() + ".txt" , sub.getName() + "\n" + sub. getId() + "\n" + sub.getCredit() + "\n");
-=======
-            WriteToFile.writtNewToFile(FILESUBIDLIST + "\\" + sub.getId() + ".txt" , sub.getName() + "\n" + sub. getId() + "\n" + sub.getCredit() + "\n" + "Joined student:\n");
->>>>>>> b64ceb699d9b5cfd8576695cce2d0bb108798077
             WriteToFile.WriteToFile(FILESUBNAME, sub.getName() + "\n");
             WriteToFile.WriteToFile(FILESUBID, sub.getId() + "\n");
             WriteToFile.WriteToFile(FILESUBCREDIT, sub.getCredit() + "\n");
@@ -348,6 +336,7 @@ public class SubjectFuntion {
         
     }
     
+    // xóa Subject
     public static void deleteSubject() {
         boolean quit = false;
         String subIdFromName = "";
@@ -358,11 +347,7 @@ public class SubjectFuntion {
             ArrayList <String> idList = GetList.getList(FILESUBID);
             ArrayList <String> creditlist = GetList.getList(FILESUBCREDIT);
             int sizeId = idList.size();
-<<<<<<< HEAD
             System.out.println("\n---Subject Name List---");
-=======
-            System.out.println("\n---Subject Name List---\n");
->>>>>>> b64ceb699d9b5cfd8576695cce2d0bb108798077
             showList();
             System.out.println("what subject you like to delete\n");
             int select = Main.choice(sizeId + 1);
@@ -372,40 +357,34 @@ public class SubjectFuntion {
             String delId = subInFor.get(1);
             String delCredit = subInFor.get(2);
             do{
-<<<<<<< HEAD
                 if(subInFor.size() > 3) { // < 4   ->   > 3
-=======
-                if(subInFor.size() < 4) {
->>>>>>> b64ceb699d9b5cfd8576695cce2d0bb108798077
-                    System.out.println("There are still students, can't not deleted.");
+                    System.out.println("There are still students, can't not deleted.\n");
                     quit1 = true;
                 } else {
-                    try {
-                        ArrayList <String> newdelNameTxt = GetList.getListDel(FILESUBNAME, delName);
-                        Formatter f = new Formatter(FILESUBNAME);
-                        for(String string : newdelNameTxt) {
-                            f.format(string + '\n');
-                        }
-                        f.close();
-                        File file = new File(FILESUBIDLIST + "\\" + subIdFromName + ".txt");
-                        file.delete();
-                    } catch (Exception e) {
-                        System.out.println("can't delete file list");
-                    }
-<<<<<<< HEAD
-=======
-
->>>>>>> b64ceb699d9b5cfd8576695cce2d0bb108798077
+                    delete(delName, delId, delCredit, subIdFromName);
+                    quit1 = true;
                 }
             } while(!quit1);
+            Menu.menuExit();
+            if(Main.choice(2) == 1){
+                quit = true;
+            }
 
         } while(!quit);
-
     }
 
-
+    public static void delete(String delName, String delid, String delCredit, String subIdFromName) {
+        try {
+            ArrayList <String> newDelNameTxt = GetList.getListDel(FILESUBNAME, delName);
+            ArrayList <String> newDelIdTxt = GetList.getListDel(FILESUBID, delid);
+            ArrayList <String> newDelCreditTxt = GetList.getListDel(FILESUBCREDIT, delCredit);
+            WriteToFile.writtNewToFile(FILESUBNAME, newDelNameTxt);
+            WriteToFile.writtNewToFile(FILESUBID, newDelIdTxt);
+            WriteToFile.writtNewToFile(FILESUBCREDIT, newDelCreditTxt);
+            File f =  new File(FILESUBJECT + "//" + subIdFromName + ".txt");
+            f.delete();
+        } catch (Exception e) {
+            System.out.println("can't delete file");
+        }
+    }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> b64ceb699d9b5cfd8576695cce2d0bb108798077

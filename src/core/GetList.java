@@ -23,32 +23,25 @@ public class GetList {
         }
         return list;
     }
-<<<<<<< HEAD
     
      public static ArrayList <String> getListDel (String path, String del){
-=======
-
-    public static ArrayList <String> getListDel (String path, String del){
->>>>>>> b64ceb699d9b5cfd8576695cce2d0bb108798077
         ArrayList <String> list = new ArrayList<>();
+        int flag = 0;
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));                       
             String line;
             do {
                 line = reader.readLine();
-                if (line.equals(del)) {
-<<<<<<< HEAD
-                    
-=======
->>>>>>> b64ceb699d9b5cfd8576695cce2d0bb108798077
+                if (line.equals(del) && flag == 0) {
+                    flag = 1;
                 } else if (line != null){
-                        list.add(line);
+                    list.add(line);
                 }
             } while (line != null);
             reader.close();
         }
         catch (Exception exception){
-            System.out.println("Cannot Read :  "+path);
+            System.out.println("Cannot Read :  " +path);
         }
         return list;
     }

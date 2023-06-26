@@ -1,9 +1,4 @@
 thuan123@gmail.com
-<<<<<<< HEAD
 b@gmail.com
 B@gmail.com
 PPP@gmail.com
-=======
-A@gmail.com
-b@gmail.com
->>>>>>> b64ceb699d9b5cfd8576695cce2d0bb108798077
