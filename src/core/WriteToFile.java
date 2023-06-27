@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Formatter;
 
 public class WriteToFile {
@@ -13,6 +14,20 @@ public class WriteToFile {
         try {
             Formatter f = new Formatter(patch);
             f.format(content);
+            f.close();
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            System.out.println("fail to write to file");
+            e.printStackTrace();
+        }
+    }
+
+    public static void writtNewToFile(String patch, ArrayList <String> content) {
+        try {
+            Formatter f = new Formatter(patch);
+            for(String string : content){
+                 f.format(string + "\n");
+            } 
             f.close();
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block

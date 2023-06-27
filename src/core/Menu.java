@@ -21,20 +21,6 @@ public class Menu {
         System.out.println("4. Join Subject");
         System.out.println("5. Exit");
     }
-    public static void menuSubject () {
-        System.out.println("1. Show Subject List.");
-        System.out.println("2. Create New Subject.");
-        System.out.println("3. Read and Updata.");
-        System.out.println("4. Delete Subject.");
-        System.out.println("5. Show Subject Grade.");
-        System.out.println("6. Exit.");
-    }
-    public static void menuSubjectUpdate () {
-        System.out.println("1. Subject Name.");
-        System.out.println("2. Subject Id.");
-        System.out.println("3. Subject Credit.");
-        System.out.println("4. Exit.");
-    }
 
     public static void menuSubject () {
         System.out.println("1. Show Subject List.");
@@ -50,6 +36,12 @@ public class Menu {
         System.out.println("2. Subject Id.");
         System.out.println("3. Subject Credit.");
         System.out.println("4. Exit.");
+    }
+
+    public static void menuExit () {
+        System.out.println("what you want to do next");
+        System.out.println("1. Exit");
+        System.out.println("2. Continue");
     }
 
 }

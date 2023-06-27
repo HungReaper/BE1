@@ -85,15 +85,9 @@ public class StudentFunction {
     public static void read_updateInfor() {
         boolean quit = false;
         String filenameFromID = "";
-<<<<<<< HEAD
         ArrayList<String> idList = GetList.getList("D:\\VScode\\ProjectBE1\\Student_Management\\Student_Management\\src\\data\\id.txt");
         ArrayList <String> emailList = GetList.getList("D:\\VScode\\ProjectBE1\\Student_Management\\Student_Management\\src\\data\\email.txt");
         ArrayList <String> subList = GetList.getList("D:\\VScode\\ProjectBE1\\Student_Management\\Student_Management\\src\\data\\SubjectName.txt");
-=======
-        ArrayList<String> idList = GetList.getList("src\\data\\id.txt");
-        ArrayList <String> emailList = GetList.getList("src\\data\\email.txt");
-        //ArrayList <String> subList = GetList.getList("D:\\VScode\\ProjectBE1\\Student_Management\\Student_Management\\src\\data\\.txt");
->>>>>>> b64ceb699d9b5cfd8576695cce2d0bb108798077
         int sizeID = idList.size();
         System.out.println("Choose a student to read or update");
         int select = Main.choice(sizeID+1);

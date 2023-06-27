@@ -98,43 +98,4 @@ public class CheckValid {
     }
         return 0;
     }
-
-    // File address
-    static final String subjectFile = "src\\data\\Subject\\";
-    // check Subject nname input
-
-    public static int checkSubName (String name, String Patch){
-
-        if(name.length() == 0) return 1;
-        if(name.length() > 200) return 2;
-        ArrayList <String> nameList = GetList.getList(Patch);
-        for(String string : nameList) {
-            if(nameList.equals(name)) return 3;
-        }
-        return 0;
-    }
-
-    public static int checkSubId(String id) {
-        ArrayList <String> idList = GetList.getList(subjectFile + "SubjectId.txt");
-        for (String string : idList){
-            if(id.equals(string)) return 1;
-        }
-        if(id.length() == 0) return 2;
-        if(id.length() > 30) return 3;
-        return 0;
-    }
-
-    public static int checkSubcredit (String credit){
-
-    try {
-        int number = Integer.parseInt(credit);
-
-        if(number < 0) return 1;
-        if(number > 30) return 2;
-    } catch (NumberFormatException e) {
-        return 3;
-    }
-        return 0;
-    }
-
 }

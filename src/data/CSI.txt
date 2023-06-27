@@ -1,5 +1,5 @@
 nhap mon may tinh
 CSI
-3
+4
 nguyen tien thuan
 le van B

@@ -2,8 +2,5 @@ le van B
 999999
 b@gmail.com
 2 / 2 / 2000
-<<<<<<< HEAD
 Nhap mon lap trinh
 nhap mon may tinh , 6.0 , 8.0 , 7.0 , 7.0
-=======
->>>>>>> b64ceb699d9b5cfd8576695cce2d0bb108798077
