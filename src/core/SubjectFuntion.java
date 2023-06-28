@@ -16,7 +16,8 @@ public class SubjectFuntion {
     public static final String FILESUBNAME = "D:\\VScode\\ProjectBE1\\Student_Management\\Student_Management\\src\\data\\SubjectName.txt";
     public static final String FILESUBID = "D:\\VScode\\ProjectBE1\\Student_Management\\Student_Management\\src\\data\\SubjectId.txt";
     public static final String FILESUBCREDIT = "D:\\VScode\\ProjectBE1\\Student_Management\\Student_Management\\src\\data\\SubjectCredit.txt";
-
+    public static final String FILESTUID = "D:\\VScode\\ProjectBE1\\Student_Management\\Student_Management\\src\\data\\id.txt";
+    public static final String FILESTUNAME = "D:\\VScode\\ProjectBE1\\Student_Management\\Student_Management\\src\\data\\studentList.txt";
     public static void subjectFuntion (){
         boolean quit = false;
         while(!quit){
@@ -44,6 +45,7 @@ public class SubjectFuntion {
                     deleteSubject();
                     break;
                 case 5:
+                    showSubGrade();
                     break;
                 case 6:
                     quit = true;
@@ -108,7 +110,7 @@ public class SubjectFuntion {
 
     public static void readAndUpdata() {
         Main.clearConsole();
-        System.out.println("chose what subject you want to update\n");
+        System.out.println("    chose what subject you want to update   \n");
         String subIdFromName = "";
         ArrayList <String> subName = GetList.getList(FILESUBNAME);
         ArrayList <String> idList = GetList.getList(FILESUBID);
@@ -285,7 +287,6 @@ public class SubjectFuntion {
             Main.clearConsole();
             ArrayList <String> idList = GetList.getList(FILESUBID);
             int sizeId = idList.size();
-            System.out.println("\n---Subject Name List---");
             showList();
             System.out.println("what subject you like to delete\n");
             int select = Main.choice(sizeId + 1);
@@ -295,7 +296,7 @@ public class SubjectFuntion {
             String delId = subInFor.get(1);
             String delCredit = subInFor.get(2);
             do{
-                if(subInFor.size() > 3) { // < 4   ->   > 3
+                if(subInFor.size() > 3) { // 3 kiểm tra xem có tên học sinh nhập học không
                     System.out.println("There are still students, can't not deleted.\n");
                     quit1 = true;
                 } else {
@@ -324,5 +325,70 @@ public class SubjectFuntion {
         } catch (Exception e) {
             System.out.println("can't delete file");
         }
+    }
+
+    public static void showSubGrade() {
+        Main.clearConsole();
+        Scanner sc = new Scanner(System.in);
+        boolean quit = true;
+        String subIdFromName = "";
+        String subName = "";
+        do {
+            quit = true;
+            ArrayList <String> idList = GetList.getList(FILESUBID);
+            ArrayList <String> subjectName = GetList.getList(FILESUBNAME);
+            int sizeId = idList.size();
+            Main.clearConsole();
+            showList();
+            System.out.println("what subject you like to see grad?\n");
+            int select = Main.choice(sizeId + 1);
+            subIdFromName = idList.get(select - 1);
+            subName = subjectName.get(select - 1);
+            ArrayList <String> subInfor = GetList.getList(FILESUBJECT + "\\" + subIdFromName + ".txt");
+            boolean quit1 =true;
+            do{
+                if(subInfor.size() > 3){
+                    System.out.printf("%-25s%-16s%-20s%-20s\n", "Student name", "lab", "Prgress", "Final");
+                    ArrayList <String> idStuList = GetList.getList(FILESTUID);
+                    ArrayList <String> nameStuList = GetList.getList(FILESTUNAME);
+                    ArrayList <String> idStu = new ArrayList<>();
+                    for(int i = 3; i < subInfor.size(); i ++){
+                        String string = subInfor.get(i);
+                        int flag = 0;
+                        for(String string2 : nameStuList) {
+                            if(string.equals(string2)) {
+                                String fileName = idStuList.get(flag);
+                                ArrayList <String> sub_gaArrayList = GetList.getList(FILESUBJECT + "\\" +fileName + ".txt");
+                                try {
+                                    for(int i1 = 4; i < sub_gaArrayList.size(); i1 ++) {                               
+                                        String[] temp = sub_gaArrayList.get(i1).split(" , ");
+                                        if(subName.equals(temp[0])) {
+                                            System.out.printf("%-25s", sub_gaArrayList.get(0));
+                                            if(temp.length == 1){
+                                                System.out.printf("\n");
+                                                continue;
+                                            }
+                                            else  {
+                                                System.out.printf("%-16s%-20s%-20s\n", temp[1], temp[2], temp[3]);
+                                            }
+                                        } 
+                                    }
+                                } catch (Exception e) {
+                                    // TODO: handle exception
+                                }
+
+                            }
+                            flag++;
+                        }
+                    }
+                } else {
+                    System.out.println("\nthere no student to show grade\n");
+                }
+                quit1 = true;
+                Menu.menuExit();
+                if(Main.choice(2) == 2) quit = false;
+
+            } while(!quit1);
+        } while(!quit);
     }
 }

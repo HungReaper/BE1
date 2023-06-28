@@ -39,7 +39,7 @@ public class Menu {
     }
 
     public static void menuExit () {
-        System.out.println("what you want to do next");
+        System.out.println("\nwhat you want to do next");
         System.out.println("1. Exit");
         System.out.println("2. Continue");
     }
