@@ -65,37 +65,61 @@ public class CheckValid {
     static final String subjectFile = "D:\\VScode\\ProjectBE1\\Student_Management\\Student_Management\\src\\data\\";
     // check Subject nname input
 
-    public static int checkSubName (String name, String Patch){
-
-        if(name.length() == 0) return 1;
-        if(name.length() > 200) return 2;
+    public static boolean checkSubName (String name, String Patch){
+        if(name.length() == 0) {
+            System.out.println("you should give this subject a name! please Re-Enter");
+            return false;
+        }
+        if(name.length() > 200) {
+            System.out.println("your subject name is too long, please make it shor enought");
+            return false;
+        }
         ArrayList <String> nameList = GetList.getList(Patch);
         for(String string : nameList) {
-            if(string.equals(name)) return 3;               // nameList -> string
+            if(string.equals(name)){
+                System.out.println("subject name is already exited. Please Re-Enter");
+                return false;
+            }               // nameList -> string
         }
-        return 0;
+        return true;
     }
 
-    public static int checkSubId(String id) {
+    public static boolean checkSubId(String id) {
         ArrayList <String> idList = GetList.getList(subjectFile + "SubjectId.txt");
         for (String string : idList){
-            if(id.equals(string)) return 1;
+            if(id.equals(string)) {
+                System.out.println("The subject id already exited! please Re-Enter");
+                return false;
+            }
         }
-        if(id.length() == 0) return 2;
-        if(id.length() > 30) return 3;
-        return 0;
+        if(id.length() == 0) {
+            System.out.println("you should give your subject a id");
+            return false;
+        }
+        if(id.length() > 30) {
+            System.out.println("Your subject id is too long to remember, please Re-Enter subject id, I fogot it.");
+            return false;
+        }
+        return true;
     }
 
-    public static int checkSubcredit (String credit){
+    public static boolean checkSubcredit (String credit){
 
     try {
         int number = Integer.parseInt(credit);
 
-        if(number < 0) return 1;
-        if(number > 30) return 2;
+        if(number < 0) {
+            System.out.println("your subject credit neeed to be a positive integers. Please Re-Enter!");
+            return false;
+        }
+        if(number > 30) {
+            System.out.println("your subject credit is to hight. please Re-Enter!");
+            return false;
+        }
     } catch (NumberFormatException e) {
-        return 3;
+        System.out.println("your subject credit need to be a number. please Re-Enter!");
+        return false;
     }
-        return 0;
+        return true;
     }
 }
