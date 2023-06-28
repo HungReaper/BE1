@@ -299,7 +299,7 @@ public class SubjectFuntion {
                     System.out.println("There are still students, can't not deleted.\n");
                     quit1 = true;
                 } else {
-                    delete(delName, delId, delCredit, subIdFromName);
+                    delete(delName, delId, delCredit, subIdFromName, select - 1);
                     quit1 = true;
                 }
             } while(!quit1);
@@ -311,11 +311,11 @@ public class SubjectFuntion {
         } while(!quit);
     }
 
-    public static void delete(String delName, String delid, String delCredit, String subIdFromName) {
+    public static void delete(String delName, String delid, String delCredit, String subIdFromName, int select) {
         try {
             ArrayList <String> newDelNameTxt = GetList.getListDel(FILESUBNAME, delName);
             ArrayList <String> newDelIdTxt = GetList.getListDel(FILESUBID, delid);
-            ArrayList <String> newDelCreditTxt = GetList.getListDel(FILESUBCREDIT, delCredit);
+            ArrayList <String> newDelCreditTxt = GetList.getListDel(FILESUBCREDIT, delCredit, select);
             WriteToFile.writtNewToFile(FILESUBNAME, newDelNameTxt);
             WriteToFile.writtNewToFile(FILESUBID, newDelIdTxt);
             WriteToFile.writtNewToFile(FILESUBCREDIT, newDelCreditTxt);
