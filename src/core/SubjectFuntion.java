@@ -79,17 +79,7 @@ public class SubjectFuntion {
                 check = true;
                 System.out.println("- Subject Name: ");
                 name = sc.nextLine();
-                int flag = CheckValid.checkSubName(name, FILESUBNAME);
-                if(flag == 1) {
-                    System.out.println("you should give this subject a name! please Re-Enter");
-                    check = false;
-                } else if(flag == 2) {
-                    System.out.println("your subject name is too long, please make it shor enought");
-                    check = false;
-                } else if(flag == 3) {
-                    System.out.println("subject name is already exited. Please Re-Enter");
-                    check = false;
-                }
+                check = CheckValid.checkSubName(name, FILESUBNAME);
             } while(!check);
             sub.setName(name);
             do {
@@ -97,17 +87,7 @@ public class SubjectFuntion {
                 System.out.println("- Subject id: ");
                 id = sc.nextLine();
                 id = id.toUpperCase();
-                int flag = CheckValid.checkSubId(id);
-                if(flag == 1) {
-                    System.out.println("The subject id already exited! please Re-Enter");
-                    check = false;
-                } else if(flag == 2) {
-                    System.out.println("you should give your subject a id");
-                    check = false;
-                } else if(flag == 3) {
-                    System.out.println("Your subject id is too long to remember, please Re-Enter subject id, I fogot it.");
-                    check = false;
-                }
+                check = CheckValid.checkSubId(id);
             } while(!check);
             sub.setId(id);
 
@@ -115,17 +95,7 @@ public class SubjectFuntion {
                 check = true;
                 System.out.println("- Subject credit");
                 credit = sc.nextLine();
-                int flag = CheckValid.checkSubcredit(credit);
-                if(flag == 1) {
-                    System.out.println("your subject credit neeed to be a positive integers. Please Re-Enter!");
-                    check = false;
-                } else if(flag == 3) {
-                    System.out.println("your subject credit need to be a number. please Re-Enter!");
-                    check = false;
-                } else if(flag == 2) {
-                    System.out.println("your subject credit is to hight. please Re-Enter!");
-                    check = false;
-                }
+                check = CheckValid.checkSubcredit(credit);
             } while(!check);
             sub.setCredit(credit);
 
@@ -262,17 +232,7 @@ public class SubjectFuntion {
             check = true;
             Scanner sc = new Scanner(System.in);
             newName = sc.nextLine();
-            int flag =  CheckValid.checkSubName(newName, FILESUBNAME);
-            if(flag == 1) {
-                    System.out.println("you should give this subject a name! please Re-Enter");
-                    check = false;
-                } else if(flag == 2) {
-                    System.out.println("your subject name is too long, please make it shor enought");
-                    check = false;
-                } else if(flag == 3) {
-                    System.out.println("subject name is already exited. Please Re-Enter");
-                    check = false;
-                }
+            check =  CheckValid.checkSubName(newName, FILESUBNAME);
         } while(!check);
         return newName;
     }
@@ -285,17 +245,7 @@ public class SubjectFuntion {
             Scanner sc = new Scanner(System.in);
             newId = sc.nextLine();
             newId.toUpperCase();
-            int flag = CheckValid.checkSubId(newId);
-            if(flag == 1) {
-                    System.out.println("The subject id already exited! please Re-Enter");
-                    check = false;
-                } else if(flag == 2) {
-                    System.out.println("you should give your subject a id");
-                    check = false;
-                } else if(flag == 3) {
-                    System.out.println("Your subject id is too long to remember, please Re-Enter subject id, I fogot it.");
-                    check = false;
-                }
+            check = CheckValid.checkSubId(newId);
         } while(!check);
         return newId;
     }
@@ -307,17 +257,7 @@ public class SubjectFuntion {
             check = true;
             Scanner sc = new Scanner(System.in);
             newCredit = sc.nextLine();
-            int flag = CheckValid.checkSubcredit(newCredit);
-            if(flag == 1) {
-                System.out.println("your subject credit neeed to be a positive integers. Please Re-Enter!");
-                check = false;
-            } else if(flag == 3) {
-                System.out.println("your subject credit need to be a number. please Re-Enter!");
-                check = false;
-            } else if(flag == 2) {
-                System.out.println("your subject credit is to hight. please Re-Enter!");
-                check = false;
-            }
+            check = CheckValid.checkSubcredit(newCredit);
         } while(!check);
         return newCredit;
     }
@@ -343,9 +283,7 @@ public class SubjectFuntion {
         do{
             boolean quit1 = true;
             Main.clearConsole();
-            ArrayList <String> subName = GetList.getList(FILESUBNAME);
             ArrayList <String> idList = GetList.getList(FILESUBID);
-            ArrayList <String> creditlist = GetList.getList(FILESUBCREDIT);
             int sizeId = idList.size();
             System.out.println("\n---Subject Name List---");
             showList();
