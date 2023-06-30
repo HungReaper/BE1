@@ -55,11 +55,11 @@ public class SubjectFuntion {
     }
 
     public static void showList() {
-        System.out.println("    ---Subject List---\n");
+        System.out.println("    --- Subject List ---\n");
         ArrayList<String> subjectList = GetList.getList(FILESUBNAME);
         int i = 1;
         for (String sub : subjectList) {
-            System.out.println(i + ". " + sub);
+            System.out.println(i + ".   " + sub);
             i++;
         }
         sizeList = i-1;
@@ -70,7 +70,7 @@ public class SubjectFuntion {
         Main.clearConsole();
         Subject sub = new Subject();
         Scanner sc = new Scanner(System.in);
-        System.out.println("--Create New subject");
+        System.out.println("-- Create New subject ---");
         String name = "";
         String id = "";
         String credit = "0";
@@ -79,14 +79,14 @@ public class SubjectFuntion {
         do{
             do {
                 check = true;
-                System.out.println("- Subject Name: ");
+                System.out.printf("- Subject Name: ");
                 name = sc.nextLine();
                 check = CheckValid.checkSubName(name, FILESUBNAME);
             } while(!check);
             sub.setName(name);
             do {
                 check = true;
-                System.out.println("- Subject id: ");
+                System.out.printf("- Subject id: ");
                 id = sc.nextLine();
                 id = id.toUpperCase();
                 check = CheckValid.checkSubId(id);
@@ -95,7 +95,7 @@ public class SubjectFuntion {
 
             do {
                 check = true;
-                System.out.println("- Subject credit");
+                System.out.printf("- Subject credit: ");
                 credit = sc.nextLine();
                 check = CheckValid.checkSubcredit(credit);
             } while(!check);
@@ -110,32 +110,32 @@ public class SubjectFuntion {
 
     public static void readAndUpdata() {
         Main.clearConsole();
-        System.out.println("    chose what subject you want to update   \n");
+        System.out.println("Chose what subject you want to update\n");
         String subIdFromName = "";
         ArrayList <String> subName = GetList.getList(FILESUBNAME);
         ArrayList <String> idList = GetList.getList(FILESUBID);
         ArrayList <String> creditlist = GetList.getList(FILESUBCREDIT);
         int sizeId = idList.size();
         showList();
-        System.out.println("what subject you like to Read?\n");
+        System.out.println("\n what subject you like to Read?\n");
         int select = Main.choice(sizeId + 1);
         subIdFromName = idList.get(select - 1);
         boolean quit = false;
         ArrayList <String> subInFor = GetList.getList(FILESUBIDLIST + "\\" + subIdFromName + ".txt");
         while(!quit){
-            int section = 0;
+            int section = select;
             do{
                showSubInFor(subInFor);
                System.out.println();
-               System.out.println("---Update---\n");
+               System.out.println("--- Update ---\n");
                Menu.menuSubjectUpdate();
                System.out.println("\nWhat would you like to update?\n");
-               section = Main.choice(4);
-               switch(section){
+               int section1 = Main.choice(4);
+               switch(section1){
                     // update name
                     case 1:
                         Main.clearConsole();
-                        System.out.println("New Subject Name: ");
+                        System.out.printf("- New Subject Name: ");
                         String newName = updateName();
                         subInFor.set(0, newName);
                         subName.set(section - 1, newName);
@@ -161,7 +161,7 @@ public class SubjectFuntion {
                     // updata id
                     case 2:
                         Main.clearConsole();
-                        System.out.println("New subject ID: ");
+                        System.out.printf("- New subject ID: ");
                         String newId = updateId();
                         newId.toUpperCase();
                         subInFor.set(1, newId);
@@ -195,7 +195,7 @@ public class SubjectFuntion {
                     // updata credit
                     case 3:
                         Main.clearConsole();
-                        System.out.println("New subject credit: ");
+                        System.out.printf("- New subject credit: ");
                         String newCredit = updateCredit();
                         subInFor.set(2, newCredit);
                         creditlist.set(section - 1, newCredit);
@@ -267,10 +267,10 @@ public class SubjectFuntion {
     public static void showSubInFor(ArrayList <String> list) {
         Main.clearConsole();
         try {
-            System.out.println("---Subject's Information\n");
-            System.out.println("    - Name:     " + list.get(0));
-            System.out.println("    - ID:       " + list.get(1));
-            System.out.println("    - Credit:   " + list.get(2));
+            System.out.println("--- Subject's Information ---\n");
+            System.out.println("    - Name     : " + list.get(0));
+            System.out.println("    - ID       : " + list.get(1));
+            System.out.println("    - Credit   : " + list.get(2));
         } catch (Exception e) {
             System.out.println("can't show information");
             // TODO: handle exception
@@ -382,7 +382,7 @@ public class SubjectFuntion {
                         }
                     }
                 } else {
-                    System.out.println("\nthere no student to show grade\n");
+                    System.out.println("\n  There no student to show grade");
                 }
                 quit1 = true;
                 Menu.menuExit();
